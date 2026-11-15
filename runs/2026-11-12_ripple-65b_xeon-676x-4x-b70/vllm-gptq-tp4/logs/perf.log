@@ -1,0 +1,4 @@
+c=1 trial=0 prompt_tok=420 TTFT=344ms TPOT=22.9ms per-stream=43.58 tok/s aggregate=41.3 tok/s
+c=1 trial=1 prompt_tok=420 TTFT=186ms TPOT=23.0ms per-stream=43.54 tok/s aggregate=42.4 tok/s
+c=4 trial=0 prompt_tok=420 TTFT=722ms TPOT=24.4ms per-stream=40.97 tok/s aggregate=147.1 tok/s
+c=4 trial=1 prompt_tok=420 TTFT=616ms TPOT=24.3ms per-stream=41.19 tok/s aggregate=150.1 tok/s

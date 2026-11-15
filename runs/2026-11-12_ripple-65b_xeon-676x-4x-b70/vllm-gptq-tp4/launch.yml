@@ -1,0 +1,50 @@
+# vLLM, Ripple-65B Preview GPTQ 4-bit, tensor-parallel across all four Arc Pro B70s.
+# Equivalent of the compose service used for this run, with host-specific values replaced.
+#   docker compose -f launch.yml up -d
+services:
+  vllm:
+    image: vllm-xpu-main:3bc0f430          # see builds/vllm-xpu-0.34.0rc1.dev270-3bc0f430
+    restart: "no"
+    ipc: host
+    shm_size: "32g"
+    # oneCCL's GPU IPC handle exchange needs CAP_SYS_PTRACE under Docker's default seccomp profile;
+    # without it the first collective hangs. Least-privilege substitute for --privileged.
+    cap_add: ["SYS_PTRACE"]
+    group_add: ["video", "render"]
+    ports: ["8200:8200"]
+    devices:                                # one card per PCI address (see rigs/xeon-676x-4x-b70)
+      - /dev/dri/by-path/pci-0000:0d:00.0-card:/dev/dri/card1
+      - /dev/dri/by-path/pci-0000:0d:00.0-render:/dev/dri/renderD128
+      - /dev/dri/by-path/pci-0000:64:00.0-card:/dev/dri/card2
+      - /dev/dri/by-path/pci-0000:64:00.0-render:/dev/dri/renderD129
+      - /dev/dri/by-path/pci-0000:90:00.0-card:/dev/dri/card3
+      - /dev/dri/by-path/pci-0000:90:00.0-render:/dev/dri/renderD130
+      - /dev/dri/by-path/pci-0000:a6:00.0-card:/dev/dri/card4
+      - /dev/dri/by-path/pci-0000:a6:00.0-render:/dev/dri/renderD131
+    environment:
+      - HF_HUB_OFFLINE=1
+      - VLLM_TARGET_DEVICE=xpu
+      - ZE_FLAT_DEVICE_HIERARCHY=COMPOSITE
+      - ZE_AFFINITY_MASK=0,1,2,3
+      - SYCL_UR_USE_LEVEL_ZERO_V2=1
+      - VLLM_WORKER_MULTIPROC_METHOD=spawn
+      - TRITON_INTEL_DEVICE_ARCH=bmg
+      # Deliberately NOT set: PYTORCH_ALLOC_CONF=expandable_segments:True — with tensor parallelism it
+      # crashed oneCCL at the first collective on this stack.
+    volumes:
+      - <hf-cache>:/hf:ro                   # Hugging Face cache holding the checkpoint below
+      # Container-side /dev/dri/by-path, so the remapped card names keep their PCI identity:
+      #   mkdir -p dri-by-path && cd dri-by-path && n=1 r=128; for a in 0d 64 90 a6; do
+      #     ln -s ../card$n pci-0000:$a:00.0-card; ln -s ../renderD$r pci-0000:$a:00.0-render; n=$((n+1)) r=$((r+1)); done
+      - ./dri-by-path:/dev/dri/by-path:ro
+    command: >-
+      vllm serve /hf/hub/models--ModelCloud--Ripple-65B-Preview-GPTQ-W4A16-v2/snapshots/cd5a62d7c6bfde0b9752e2857dbd6b281a2f1778
+      --served-model-name ripple-65b-gptq-sd ripple-65b-compaction
+      --quantization gptq --dtype bfloat16
+      --tensor-parallel-size 4
+      --max-model-len 65536
+      --gpu-memory-utilization 0.90
+      --max-num-seqs 16
+      --enable-prefix-caching
+      --reasoning-parser ripple --enable-auto-tool-choice --tool-call-parser ripple
+      --host 0.0.0.0 --port 8200

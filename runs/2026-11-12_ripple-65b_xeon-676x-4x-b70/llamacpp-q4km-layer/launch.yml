@@ -1,0 +1,40 @@
+# llama.cpp, Ripple-65B Preview Q4_K_M GGUF, split by layer across all four Arc Pro B70s.
+# Equivalent of the compose service used for this run, with host-specific values replaced.
+#   docker compose -f launch.yml up -d
+services:
+  llamacpp:
+    image: llamacpp-sycl:e1f7593c          # see builds/llamacpp-sycl-b12314
+    restart: "no"
+    ipc: host
+    shm_size: "16g"
+    group_add: ["video", "render"]
+    ports: ["8200:8200"]
+    devices:                                # one card per PCI address (see rigs/xeon-676x-4x-b70)
+      - /dev/dri/by-path/pci-0000:0d:00.0-card:/dev/dri/card1
+      - /dev/dri/by-path/pci-0000:0d:00.0-render:/dev/dri/renderD128
+      - /dev/dri/by-path/pci-0000:64:00.0-card:/dev/dri/card2
+      - /dev/dri/by-path/pci-0000:64:00.0-render:/dev/dri/renderD129
+      - /dev/dri/by-path/pci-0000:90:00.0-card:/dev/dri/card3
+      - /dev/dri/by-path/pci-0000:90:00.0-render:/dev/dri/renderD130
+      - /dev/dri/by-path/pci-0000:a6:00.0-card:/dev/dri/card4
+      - /dev/dri/by-path/pci-0000:a6:00.0-render:/dev/dri/renderD131
+    environment:
+      - ZES_ENABLE_SYSMAN=1
+      - ONEAPI_DEVICE_SELECTOR=level_zero:*
+    volumes:
+      - /models/gguf:/models/gguf:ro
+      # Container-side /dev/dri/by-path, so the remapped card names keep their PCI identity
+      # (same 8 symlinks as in ../vllm-gptq-tp4/launch.yml).
+      - ./dri-by-path:/dev/dri/by-path:ro
+    # Model: AtomicChat/Ripple-65B-Preview-GGUF @ df550a7178a87bbfb6ee2bdbd37603c553d536ee,
+    # file Ripple-65B-Preview-Q4_K_M.gguf (38.8 GB), sha256 51de49f0... (matches the HF LFS object id).
+    # KV cache type is the default (f16): no -ctk/-ctv given. Flash attention is left on auto; the
+    # server disables it for this split (see logs/server-startup.log).
+    command: >-
+      /app/llama-server
+      -m /models/gguf/Ripple-65B-Preview-GGUF-df550a71/Ripple-65B-Preview-Q4_K_M.gguf
+      --alias ripple-65b-q4km
+      -ngl 999 --split-mode layer
+      -c 200000 -np 4 --kv-unified
+      --jinja --reasoning-format deepseek
+      --metrics --host 0.0.0.0 --port 8200

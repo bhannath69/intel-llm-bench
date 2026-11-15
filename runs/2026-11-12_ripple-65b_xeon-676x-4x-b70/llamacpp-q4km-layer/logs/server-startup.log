@@ -1,0 +1,12 @@
+# excerpt: b2-layer-server.log, 11 of 299 lines (lines 1-11)
+0.00.200.854 I srv  llama_server: initializing ...
+0.00.200.867 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.201.119 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.203.713 I srv    load_model: loading model '/models/gguf/Ripple-65B-Preview-GGUF-df550a71/Ripple-65B-Preview-Q4_K_M.gguf'
+0.04.480.591 W resolve_fused_ops: layer 0 is assigned to device SYCL0 but Flash Attention over K/V rows is assigned to device CPU (usually due to missing support)
+0.04.480.595 W resolve_fused_ops: Flash Attention over K/V rows not supported, set to disabled
+0.04.575.830 I cmn          init: llama threadpool init, n_threads = 32
+0.36.894.273 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 200192, kv_unified = 'true'
+0.36.898.036 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.36.898.080 I srv  server_run_i: model loaded
+0.36.898.085 I srv  server_on_li: listening on http://0.0.0.0:8200

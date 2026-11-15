@@ -1,0 +1,23 @@
+{
+  "intelinside": {
+    "resultId": "335",
+    "url": "https://www.intelinside.ai/results/335",
+    "rigUrl": "https://www.intelinside.ai/rigs/18"
+  },
+  "submitted": {
+    "rigId": "18",
+    "modelId": "ripple-65b-preview",
+    "quant": "q4_k_m",
+    "runtimeId": "llamacpp",
+    "runtimeVersion": "b12314 (e1f7593c)",
+    "runtimeFlags": "SYCL; llama-server -ngl 999 --split-mode layer -c 200000 -np 4 --kv-unified; f16 KV; flash attention auto-disabled; one request at a time",
+    "componentId": "intel-arc-pro-b70",
+    "componentQuantity": 4,
+    "decodeTps": 13.0,
+    "ttftMs": 271,
+    "contextLength": 200000,
+    "batchSize": 1,
+    "notes": "AtomicChat/Ripple-65B-Preview-GGUF Q4_K_M (38.8 GB, sha256 matches the HF LFS oid) split by layer across four Arc Pro B70s, each on its own PCIe Gen5 x16 link. Stock llama.cpp master b12314, built with the upstream .devops/intel.Dockerfile (oneAPI 2026.2.0). Decode measured through the server on streamed chat tasks (code and prose prompts, temperature 0.6, top_p 0.95): 13.0 tok/s on both of 2 single-request runs (446 and 350 generated tokens). TTFT 271 ms is the warm run; the first cold request took 18.8 s. Flash attention was disabled automatically (K/V-row FA unsupported with this split). Smoke-test scope: 2 runs, no power or thermal logging.",
+    "runDate": "2026-11-12"
+  }
+}

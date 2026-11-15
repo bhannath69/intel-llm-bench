@@ -1,0 +1,4 @@
+c=1 trial=0 TTFT=18815ms per-stream=13.0 tok/s aggregate=8.4 tok/s tokens=[446]
+c=1 trial=1 TTFT=271ms per-stream=13.0 tok/s aggregate=12.9 tok/s tokens=[350]
+c=4 trial=0 TTFT=3869ms per-stream=12.4 tok/s aggregate=35.4 tok/s tokens=[130, 435, 443, 467]
+c=4 trial=1 TTFT=1779ms per-stream=12.6 tok/s aggregate=28.0 tok/s tokens=[123, 241, 382, 564]
