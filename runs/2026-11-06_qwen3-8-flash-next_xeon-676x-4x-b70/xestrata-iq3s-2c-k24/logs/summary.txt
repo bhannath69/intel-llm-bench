@@ -1,0 +1,7 @@
+label: XQ1-X2-iq3s-2c-k24
+needle rc: 0
+RESULT NEEDLE PASS sizes=8000,32000,64000,90000 found=4/4
+soak rc: 0
+RESULT SOAK PASS requests=121 failed=0 canary_unique=1 stop=duration
+xe-fault lines before=2 after=2 new=0
+abort guard tripped: no

@@ -1,0 +1,8 @@
+# excerpt: xestrata-iq3_s.log, 7 of 1722 lines (lines 668,672,680,684,691,705,714)
+[strata] 2026-11-06 12:43:19 engine started: /usr/lib/x86_64-linux-gnu/xestrata/engine/strata --serve --pack /data/packs/iq3_s --native /data/models/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-00001-of-00002.gguf --ple-gguf /data/models/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-00002-of-00002.gguf --expert-profile /usr/share/xestrata/data/expert-profile.bin --expert-cache auto --prefill auto --spec 4 --spec-min-p 0.5 --mtp /data/mtp/rt --max-context 262144 --kv int8 --ple-io ram --kv-resident 32768 --prefill-cpu-share 0.90 --vram-free-mib 30991
+strata generate: GPU Intel(R) Arc(TM) Pro B70 Graphics, 256 compute units, 31.9 GiB, prompt matrix products on oneMath (oneMKL), XeStrata's own kernels (XMX) for the rest; the experts' in int8 (XMX) below 362 rows an expert, FP16 above
+strata generate: KV streaming: 32768 of 262144 cells per QSA layer in VRAM, the K/V in 3.09 GiB of pinned RAM
+strata mtp: draft layer loaded, 835 MiB of VRAM (experts 675, dense 111), files read in 0.26 s (3060 MiB/s)
+strata generate: expert cache 12229 slots, 23.21 GiB of VRAM; policy is
+strata generate: session is up (engine xe0.2.2-1)
+strata serve: 571 MiB of VRAM free with everything loaded

@@ -1,0 +1,82 @@
+{
+  "argv": [
+    "scripts/xetest.py",
+    "needle",
+    "--sizes",
+    "8000,32000,64000,90000",
+    "--out",
+    "runs/suite-XQ1-X2-iq3s-2c-k24-20261106T211132/needle"
+  ],
+  "start_time": "2026-11-06T21:11:32.677457+00:00",
+  "docker_started_at": "2026-11-06T21:09:46.808564628Z",
+  "v1_status": {
+    "service": "strata",
+    "model": "qwen3.8-flash-next-iq3_s",
+    "loaded": true,
+    "auto_load": true,
+    "structured_output": {
+      "formats": [
+        "json_object",
+        "json_schema"
+      ],
+      "method": "prompt_and_validate",
+      "constrained_decoding": false,
+      "stream_buffered": true
+    },
+    "engine": "xe0.2.2-1",
+    "started": 1793999441,
+    "uptime_s": 51,
+    "cache_max_tokens": 262144,
+    "context": {
+      "native": 262144,
+      "max_positions": 262144
+    },
+    "concurrency": {
+      "serving": 1,
+      "requested": 1
+    },
+    "dialects": [
+      "/v1/chat/completions",
+      "/v1/messages",
+      "/v1/responses"
+    ],
+    "vision": {
+      "enabled": false,
+      "available": false,
+      "error": null,
+      "encoder": null,
+      "fallback": null
+    },
+    "image_generation": {
+      "enabled": false
+    },
+    "activity": {
+      "requests": 0,
+      "in_flight": 0,
+      "last_request_at": null
+    },
+    "last_timings": null,
+    "engine_failure": null,
+    "vram": {
+      "elastic": false
+    },
+    "machine": {
+      "at": 1793999492,
+      "gpu": {
+        "name": "Intel Battlemage G31 [Intel Graphics] at 0000:0d:00.0 + Intel Battlemage G31 [Intel Graphics] at 0000:90:00.0",
+        "used_mib": 56674.0,
+        "total_mib": 65312.0,
+        "util_pct": 0.0,
+        "temp_c": 62.0,
+        "power_w": 101.74585428193834
+      },
+      "ram": {
+        "used_gib": 92.2,
+        "total_gib": 246.6
+      }
+    }
+  },
+  "backend": "xestrata",
+  "model": "x",
+  "container": "xestrata-b70"
+}

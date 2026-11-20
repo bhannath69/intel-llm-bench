@@ -1,0 +1,99 @@
+{
+  "argv": [
+    "scripts/xetest.py",
+    "soak",
+    "--duration",
+    "600",
+    "--canary-every",
+    "300",
+    "--effort",
+    "none",
+    "--out",
+    "runs/suite-XQ1-X1-iq3s-1c-20261106T205649/soak"
+  ],
+  "start_time": "2026-11-06T20:58:12.153667+00:00",
+  "docker_started_at": "2026-11-06T20:43:19.214054742Z",
+  "v1_status": {
+    "service": "strata",
+    "model": "qwen3.8-flash-next-iq3_s",
+    "loaded": true,
+    "auto_load": true,
+    "structured_output": {
+      "formats": [
+        "json_object",
+        "json_schema"
+      ],
+      "method": "prompt_and_validate",
+      "constrained_decoding": false,
+      "stream_buffered": true
+    },
+    "engine": "xe0.2.2-1",
+    "started": 1793997860,
+    "uptime_s": 831,
+    "cache_max_tokens": 262144,
+    "context": {
+      "native": 262144,
+      "max_positions": 262144
+    },
+    "concurrency": {
+      "serving": 1,
+      "requested": 1
+    },
+    "dialects": [
+      "/v1/chat/completions",
+      "/v1/messages",
+      "/v1/responses"
+    ],
+    "vision": {
+      "enabled": false,
+      "available": false,
+      "error": null,
+      "encoder": null,
+      "fallback": null
+    },
+    "image_generation": {
+      "enabled": false
+    },
+    "activity": {
+      "requests": 41,
+      "in_flight": 0,
+      "last_request_at": 1793998692
+    },
+    "last_timings": {
+      "cache_n": 0,
+      "prompt_n": 89615,
+      "prompt_ms": 38051.7,
+      "prompt_per_token_ms": 0.425,
+      "prompt_per_second": 2355.1,
+      "predicted_n": 8,
+      "predicted_ms": 83.8,
+      "predicted_per_token_ms": 10.475,
+      "predicted_per_second": 95.5,
+      "draft_n": 6,
+      "draft_n_accepted": 6,
+      "at": 1793998692
+    },
+    "engine_failure": null,
+    "vram": {
+      "elastic": false
+    },
+    "machine": {
+      "at": 1793998692,
+      "gpu": {
+        "name": "Intel Battlemage G31 [Intel Graphics] at 0000:0d:00.0",
+        "used_mib": 30580.0,
+        "total_mib": 32656.0,
+        "util_pct": 64.4028758368334,
+        "temp_c": 73.0,
+        "power_w": 181.70765376119743
+      },
+      "ram": {
+        "used_gib": 88.8,
+        "total_gib": 246.6
+      }
+    }
+  },
+  "backend": "xestrata",
+  "model": "x",
+  "container": "xestrata-b70"
+}

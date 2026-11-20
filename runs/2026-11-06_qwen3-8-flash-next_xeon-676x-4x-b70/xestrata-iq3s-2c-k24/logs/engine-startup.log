@@ -1,0 +1,17 @@
+# excerpt: xestrata-iq3_s-2c-k24.log, 16 of 2752 lines (lines 2172,2174,2177,2179,2182,2187,2191,2194,2195,2196,2202,2208,2209,2218,2222,2229)
+[strata] 2026-11-06 13:09:47 engine started: /usr/lib/x86_64-linux-gnu/xestrata/engine/strata --serve --pack /data/packs/iq3_s --native /data/models/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-00001-of-00002.gguf --ple-gguf /data/models/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-00002-of-00002.gguf --expert-profile /usr/share/xestrata/data/expert-profile.bin --expert-cache auto --prefill auto --spec 4 --spec-min-p 0.5 --mtp /data/mtp/rt --max-context 262144 --kv int8 --ple-io ram --kv-resident 32768 --prefill-cpu-share 0.90 --vram-free-mib 30991 --layer-split 24 --split-device 0000:90:00.0
+strata generate: layer split across 2 GPUs: CUDA0, then CUDA1 (split 24)
+strata generate: GPU Intel(R) Arc(TM) Pro B70 Graphics, 256 compute units, 31.9 GiB, prompt matrix products on oneMath (oneMKL), XeStrata's own kernels (XMX) for the rest; the experts' in int8 (XMX) below 362 rows an expert, FP16 above
+strata generate: GPU 1 Intel(R) Arc(TM) Pro B70 Graphics, 256 compute units, 31.9 GiB, prompt matrix products on oneMath (oneMKL), XeStrata's own kernels (XMX) for the rest; the experts' in int8 (XMX) below 362 rows an expert, FP16 above
+strata generate: layer split: CUDA0 loads the dense weights of layers 0-23 only
+strata generate: KV streaming: 32768 of 262144 cells per QSA layer in VRAM, the K/V in 1.55 GiB of pinned RAM
+strata generate: layer split: CUDA1 loads the dense weights of layers 24-47 only
+strata generate: layer split: CUDA1 PCIe probe 56.5 GB/s (best of 56.4 56.5 56.5 56.5) -> pcie_frac 0.55
+strata generate: layer split: CUDA1 holds its weights, session and head; 26.35 GiB free
+strata mtp: draft layer loaded, 835 MiB of VRAM (experts 675, dense 111), files read in 0.25 s (3134 MiB/s)
+strata generate: expert cache 12288 slots, 22.14 GiB of VRAM; policy is
+strata generate: layer split: CUDA1 runs layers 24-47, expert cache 12194 slots (24.50 GiB), 12194 of its 12288 profiled pairs; slot 0 verified
+strata generate: layer split: CUDA0 runs layers 0-23
+strata generate: session is up (engine xe0.2.2-1)
+strata serve: layer split, CUDA1: the prompt path borrows 5708 cache slots (11.51 GiB)
+strata serve: layer split: layers 0-23 (CUDA0), 24-47 (CUDA1), one hand-off per window

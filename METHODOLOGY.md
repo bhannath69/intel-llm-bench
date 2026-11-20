@@ -32,6 +32,12 @@
   `completion_tokens` and includes any reasoning tokens. Single-request runs use a different prompt per
   trial, so the two trials are not repeats of the same text.
 
+- **Soak** (`xetest.py soak`): five fixed prompts (code fix, function + tests, text → JSON, a 7.7K-token log
+  summary, a 300-word essay) rotated for a fixed time, streamed, temperature 0.6 / top_p 0.95 / top_k 20, up to
+  1024 output tokens. Decode per request = `completion_tokens / (total time − time to first token)`; the posted
+  figure is the median request, with the slowest and fastest requests as the range. Used for runtimes whose
+  speculative decoding cannot be switched off, so the content mix is fixed and stated.
+
 Speculative decoding results depend heavily on content: the same setup can range several-fold between
 prompts. They are only posted with that range stated, or not at all.
 

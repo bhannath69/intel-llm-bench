@@ -1,0 +1,36 @@
+{
+  "requests": 114,
+  "failed": 0,
+  "canaries": 3,
+  "canary_unique": 2,
+  "stop_reason": "duration",
+  "workload_decode_toks_s": {
+    "min": 72.2,
+    "median": 87.75,
+    "max": 127.1
+  },
+  "workload_decode_wire_toks_s": {
+    "min": 72.42168609737786,
+    "median": 89.14348043495106,
+    "max": 128.57369096260004
+  },
+  "draft_acceptance": 0.6807234910683186,
+  "per_prompt_median_wall_s": {
+    "fix_bug": 1.5726559162139893,
+    "parse_iso": 8.574380874633789,
+    "invoice_extract": 1.7210171222686768,
+    "incident_log": 8.290878772735596,
+    "transistor_history": 6.085724234580994
+  },
+  "first_third_median_decode_toks_s": 87.4,
+  "last_third_median_decode_toks_s": 89.69999999999999,
+  "per_prompt_median_decode_wire_toks_s": {
+    "fix_bug": 89.14221760738927,
+    "parse_iso": 101.960847091756,
+    "invoice_extract": 126.72466117444088,
+    "incident_log": 82.72251659604946,
+    "transistor_history": 76.85104693418495
+  },
+  "first_third_median_decode_wire_toks_s": 88.3705717514746,
+  "last_third_median_decode_wire_toks_s": 90.92874718794299
+}
