@@ -10,6 +10,7 @@ intelinside.ai rig: [/rigs/18](https://www.intelinside.ai/rigs/18)
 | GPUs | 4× Intel Arc Pro B70 (32 GB GDDR6 each, Battlemage G31, PCI id 8086:e223) |
 | GPU links | Each card on its own CPU-attached PCIe Gen5 x16 link (32 GT/s x16, read at the card's onboard switch upstream port) |
 | GPU PCI addresses | `0000:0d:00.0`, `0000:64:00.0`, `0000:90:00.0`, `0000:a6:00.0` |
+| GPU firmware | 31.1058 on all four cards (as reported by fwupd, `igsc` plugin) for every result published up to 2026-11-20 |
 | Display | Onboard BMC graphics; the B70s are compute-only |
 | OS | Ubuntu 26.04.1 LTS, kernel 7.0.0-43-generic, kernel parameter `intel_iommu=off` |
 | Container runtime | Docker 29.9.3; each runtime's GPU user-space stack ships inside its image (see [`builds/`](../../builds/)) |
