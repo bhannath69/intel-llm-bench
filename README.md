@@ -27,8 +27,8 @@ Corrections are added as new notes, never by rewriting a published run.
 |---|---|---|---|---|---|
 | 2026-11-12 | Ripple-65B Preview GPTQ 4-bit | Xeon 676X + 4× Arc Pro B70 | [vLLM, tensor parallel ×4](runs/2026-11-12_ripple-65b_xeon-676x-4x-b70/vllm-gptq-tp4/) | 43.6 tok/s | [/results/359](https://www.intelinside.ai/results/359) |
 | 2026-11-12 | Ripple-65B Preview Q4_K_M | Xeon 676X + 4× Arc Pro B70 | [llama.cpp SYCL, layer split ×4](runs/2026-11-12_ripple-65b_xeon-676x-4x-b70/llamacpp-q4km-layer/) | 13.0 tok/s | [/results/335](https://www.intelinside.ai/results/335) |
-| 2026-11-06 | Qwen3.8-Flash-Next IQ3_S | Xeon 676X + 1× Arc Pro B70 (CPU + GPU) | [XeStrata, MTP speculative](runs/2026-11-06_qwen3-8-flash-next_xeon-676x-4x-b70/xestrata-iq3s-1c/) | 89.1 tok/s (median; 72–129) | pending |
-| 2026-11-06 | Qwen3.8-Flash-Next IQ3_S | Xeon 676X + 2× Arc Pro B70 (CPU + GPU) | [XeStrata, layer split ×2, MTP speculative](runs/2026-11-06_qwen3-8-flash-next_xeon-676x-4x-b70/xestrata-iq3s-2c-k24/) | 94.7 tok/s (median; 74–127) | pending |
+| 2026-11-06 | Qwen3.8-Flash-Next IQ3_S | Xeon 676X + 1× Arc Pro B70 (CPU + GPU) | [XeStrata, MTP speculative](runs/2026-11-06_qwen3-8-flash-next_xeon-676x-4x-b70/xestrata-iq3s-1c/) | 89.1 tok/s (median; 72–129) | [/results/378](https://www.intelinside.ai/results/378) |
+| 2026-11-06 | Qwen3.8-Flash-Next IQ3_S | Xeon 676X + 2× Arc Pro B70 (CPU + GPU) | [XeStrata, layer split ×2, MTP speculative](runs/2026-11-06_qwen3-8-flash-next_xeon-676x-4x-b70/xestrata-iq3s-2c-k24/) | 94.7 tok/s (median; 74–127) | [/results/379](https://www.intelinside.ai/results/379) |
 
 ## Ground rules
 

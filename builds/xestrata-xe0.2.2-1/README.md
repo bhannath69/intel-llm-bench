@@ -5,7 +5,7 @@ Intel GPUs. It runs Qwen3.8-Flash-Next (125B MoE, about 6B active per token) by 
 memory and computing the rest on the CPU from system RAM, with a multi-token-prediction (MTP) draft head for
 speculative decoding.
 
-Upstream release used without changes. On intelinside.ai this is a custom build on the `strata` base runtime.
+Upstream release used without changes. On intelinside.ai this is [custom build 30](https://www.intelinside.ai/runtimes/strata/custom/30) on the `strata` base runtime.
 
 | | |
 |---|---|

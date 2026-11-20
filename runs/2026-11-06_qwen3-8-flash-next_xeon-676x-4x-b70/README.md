@@ -1,7 +1,7 @@
 # Qwen3.8-Flash-Next (125B MoE) on Arc Pro B70 + Xeon 676X with XeStrata, 2026-11-06
 
 Rig: [`xeon-676x-4x-b70`](../../rigs/xeon-676x-4x-b70/) · intelinside.ai [/rigs/18](https://www.intelinside.ai/rigs/18)
-Runtime: [XeStrata xe0.2.2-1](../../builds/xestrata-xe0.2.2-1/) · Scope: one 10-minute soak per configuration
+Runtime: [XeStrata xe0.2.2-1](../../builds/xestrata-xe0.2.2-1/) · intelinside.ai [custom build 30](https://www.intelinside.ai/runtimes/strata/custom/30) · Scope: one 10-minute soak per configuration
 (114 and 121 requests), one request at a time, card power and temperature logged.
 
 **This is a CPU + GPU result.** The model's most-used experts sit in GPU memory; the others are computed on the Xeon
@@ -22,8 +22,8 @@ gives the range.
 
 | Configuration | GPUs | Decode, 1 request (median) | range (per request) | TTFT, short prompt | Posted |
 |---|---|---|---|---|---|
-| [`xestrata-iq3s-1c`](xestrata-iq3s-1c/) | 1× B70 (`0d:00.0`) + CPU | **89.1 tok/s** | 72.4 – 128.6 | 269 ms | pending |
-| [`xestrata-iq3s-2c-k24`](xestrata-iq3s-2c-k24/) | 2× B70 (`0d:00.0`, `90:00.0`), layers split at 24 + CPU | **94.7 tok/s** | 74.3 – 126.5 | 286 ms | pending |
+| [`xestrata-iq3s-1c`](xestrata-iq3s-1c/) | 1× B70 (`0d:00.0`) + CPU | **89.1 tok/s** | 72.4 – 128.6 | 269 ms | [/results/378](https://www.intelinside.ai/results/378) |
+| [`xestrata-iq3s-2c-k24`](xestrata-iq3s-2c-k24/) | 2× B70 (`0d:00.0`, `90:00.0`), layers split at 24 + CPU | **94.7 tok/s** | 74.3 – 126.5 | 286 ms | [/results/379](https://www.intelinside.ai/results/379) |
 
 Per prompt (median decode, tok/s), showing how much the text matters:
 

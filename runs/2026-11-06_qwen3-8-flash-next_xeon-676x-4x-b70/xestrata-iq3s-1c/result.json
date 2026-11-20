@@ -1,0 +1,37 @@
+{
+  "intelinside": {
+    "resultId": "378",
+    "url": "https://www.intelinside.ai/results/378",
+    "rigUrl": "https://www.intelinside.ai/rigs/18",
+    "customRuntimeUrl": "https://www.intelinside.ai/runtimes/strata/custom/30"
+  },
+  "submitted": {
+    "rigId": "18",
+    "modelId": "qwen3-8-flash-next",
+    "quant": "iq3_s",
+    "runtimeId": "strata",
+    "customRuntimeId": "30",
+    "runtimeVersion": "xe0.2.2-1",
+    "revision": "ad821cdf1a4c50cc0bb92d2b8dc152f76daba61b",
+    "componentId": "intel-arc-pro-b70",
+    "contextLength": 262144,
+    "batchSize": 1,
+    "concurrency": 1,
+    "decodeMethod": "streamed",
+    "thinking": false,
+    "speculative": "lossless",
+    "modelRepo": "ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF",
+    "modelFile": "IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S-00001-of-00002.gguf",
+    "modelSha256": "4c1eb2ceb4915e1192f4f386021897bde56a97f40a0bb78bb86465e0f7d2aca3",
+    "runDate": "2026-11-06",
+    "componentQuantity": 1,
+    "decodeTps": 89.1,
+    "decodeTpsMin": 72.4,
+    "decodeTpsMax": 128.6,
+    "repeats": 114,
+    "ttftMs": 269,
+    "runtimeFlags": "SYCL/Level Zero, NEO 26.40; 1 GPU + CPU experts; MTP 4 drafts; int8 KV, 32K of 262K ctx in VRAM; thinking off; 1 request at a time",
+    "notes": "Weights: ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-GGUF @ ed59f920, IQ3_S in two shards (sha256 of both match the HF LFS ids; shard 2 316b46f3...). CPU + GPU: the most-used experts are cached in GPU memory, the rest are computed on the Xeon 676X from system RAM. Speculative decoding is always on (MTP, 4 drafts per step); the engine refuses --spec 0 for these packs, so there is no non-speculative baseline. Marked lossless because drafts are verified by the full model (engine design); not independently verified. Decode measured at the client per request as completion_tokens / (total time - TTFT), streamed, thinking off, T 0.6 / top_p 0.95 / top_k 20, max 1024 tokens, over a 10-minute soak rotating five fixed prompts (code fix, function + tests, text-to-JSON, 7.7K-token log summary, 300-word essay). decodeTps is the median request; min/max are the slowest and fastest requests. One Arc Pro B70 (PCIe Gen5 x16) plus the CPU. Per-prompt medians 76.9-126.7 tok/s; draft acceptance 68.1%. Server-reported decode median 87.75 tok/s. TTFT 269 ms is the median for a 37-token prompt. Prompt processing (needle test, uncached): 1,798 tok/s at 7.8K tokens, 2,350 tok/s at 89.6K (TTFT 38.1 s). Card power 226.3 W mean over the soak (at its 230 W limit); CPU power not measured. Evidence: logs, harness, engine config and telemetry at the repoUrl.",
+    "repoUrl": "https://github.com/bhannath69/intel-llm-bench/tree/5b847664fded3db9170abb6f5d0ec4641afd4e74/runs/2026-11-06_qwen3-8-flash-next_xeon-676x-4x-b70/xestrata-iq3s-1c"
+  }
+}
